@@ -2,6 +2,7 @@
 
 [![English](https://img.shields.io/badge/lang-English-blue.svg)](README.md) [![Turkish](https://img.shields.io/badge/lang-Türkçe-red.svg)](README_TR.md)
 
+!()[./kariyer-logo.png]
 MoleHealScanner is a sophisticated security scanning tool designed to detect sensitive data patterns in codebases. It features parallel processing capabilities and generates detailed, interactive HTML reports with security metrics and visualizations.
 
 ## Features
