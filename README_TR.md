@@ -44,3 +44,6 @@ MoleHealScanner, kod tabanlarında hassas veri desenlerini tespit etmek için ta
 ```bash
 go run main.go <dizin_yolu> --report
 ```
+## Teşekkürler
+
+@DevSecOps Team
