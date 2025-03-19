@@ -238,7 +238,6 @@ var severityMap = map[string]SeverityLevel{
 	"sidekiq-sensitive-url":              Low,
 }
 
-// censor, verilen stringin son 6 karakteri hariç tamamını yıldızlarla maskeler.
 func censor(s string) string {
 	if len(s) <= 6 {
 		return s
@@ -246,7 +245,6 @@ func censor(s string) string {
 	return strings.Repeat("*", len(s)-6) + s[len(s)-6:]
 }
 
-// getSeverity, bulgu tipine göre severity değerini döndürür.
 func getSeverity(findingType string) SeverityLevel {
 	if sev, exists := severityMap[findingType]; exists {
 		return sev
@@ -254,7 +252,6 @@ func getSeverity(findingType string) SeverityLevel {
 	return Medium
 }
 
-// compileRegexPatterns, verilen desenleri derleyip map olarak döner.
 func compileRegexPatterns(patterns map[string]string) map[string]*regexp.Regexp {
 	compiled := make(map[string]*regexp.Regexp)
 	for name, pat := range patterns {
@@ -268,7 +265,6 @@ func compileRegexPatterns(patterns map[string]string) map[string]*regexp.Regexp 
 	return compiled
 }
 
-// calculateEntropy, verilen stringin Shannon entropisini hesaplar.
 func calculateEntropy(s string) float64 {
 	if len(s) == 0 {
 		return 0.0
@@ -285,7 +281,6 @@ func calculateEntropy(s string) float64 {
 	return entropy
 }
 
-// getRiskLevel, toplam skor üzerinden risk seviyesini döndürür.
 func getRiskLevel(score int) string {
 	if score >= 90 {
 		return "Safe"
@@ -300,11 +295,7 @@ func getRiskLevel(score int) string {
 	}
 }
 
-// -------------------------------------------------------
-// Dosya Taraması (Scan) Fonksiyonları
-// -------------------------------------------------------
 
-// regexPatterns, dosya içerisinde aranacak tüm regex desenlerini içerir.
 var regexPatterns = map[string]string{
 	"Cloudinary":                          `cloudinary://.*`,
 	"Firebase URL":                        `.*firebaseio\.com`,
@@ -552,11 +543,10 @@ var regexPatterns = map[string]string{
 	"zendesk-secret-key":                  `(?i)[\w.-]{0,50}?(?:zendesk)(?:[ \t\w.-]{0,20})[\s'"]{0,3}(?:=|>|:{1,3}=|\|\||:|=>|\?=|,)[\x60'"\s=]{0,5}([a-z0-9]{40})(?:[\x60'"\s;]|\\[nr]|$)`,
 }
 
-// compiledRegexPatterns, regexPatterns kullanılarak derlenir.
+
 var compiledRegexPatterns = compileRegexPatterns(regexPatterns)
 
-// scanDirectoryParallel, belirtilen dizindeki dosyaları (bazı uzantıları dışlayarak) paralel olarak tarar.
-// Ek olarak taranan dosya sayısını da döndürür.
+
 func scanDirectoryParallel(directory string) ([]Finding, int) {
 	var findings []Finding
 	var mu sync.Mutex
@@ -619,7 +609,7 @@ func scanDirectoryParallel(directory string) ([]Finding, int) {
 	return findings, scannedFiles
 }
 
-// processFileLineByLine, verilen dosyayı satır satır okuyup regex eşleşmelerini kontrol eder.
+
 func processFileLineByLine(filePath string) []Finding {
 	var findings []Finding
 	file, err := os.Open(filePath)
@@ -638,7 +628,6 @@ func processFileLineByLine(filePath string) []Finding {
 			matches := re.FindAllString(line, -1)
 			if matches != nil {
 				for _, match := range matches {
-					// Düşük entropili eşleşmeler (muhtemel false positive) atlanır.
 					if calculateEntropy(match) < 3.5 {
 						continue
 					}
@@ -659,7 +648,7 @@ func processFileLineByLine(filePath string) []Finding {
 	return findings
 }
 
-// logFindings, bulunan bulguları bir log dosyasına yazar.
+
 func logFindings(findings []Finding, directory string) string {
 	dirName := filepath.Base(directory)
 	if dirName == "." {
@@ -685,18 +674,14 @@ func logFindings(findings []Finding, directory string) string {
 	return logFileName
 }
 
-// -------------------------------------------------------
-// Raporlama (HTML Report) Fonksiyonları
-// -------------------------------------------------------
 
-// FindingCategory, bulgu kategorilerini temsil eder.
 type FindingCategory struct {
 	Name     string
 	Severity SeverityLevel
 	Count    int
 }
 
-// ReportData, HTML raporunda kullanılacak tüm verileri içerir.
+
 type ReportData struct {
 	ScanDate         string
 	ScanTarget       string
@@ -814,23 +799,23 @@ func parseLogFile(logFilePath string) ([]Finding, error) {
 	return findings, nil
 }
 
-// GenerateHTMLReport artık taranan dosya sayısını da parametre olarak alıyor.
+
 func GenerateHTMLReport(logFilePath string, scannedFileCount int) error {
-	startTime := time.Now() // Rapor oluşturma başlangıç zamanı
+	startTime := time.Now() 
 	findings, err := parseLogFile(logFilePath)
 	if err != nil {
 		return fmt.Errorf("log dosyası ayrıştırılırken hata: %v", err)
 	}
 	logFileName := filepath.Base(logFilePath)
 
-	// Define the actual regex used for matching.
+	
 	const realRegexPattern = "scan_results_(.+)\\.log"
-	// Define the censored version (for display purposes only).
+	
 	const censoredRegexDisplay = "*********(.+)\\.log"
 
-	// Use the actual regex for matching.
+	
 	regex := regexp.MustCompile(realRegexPattern)
-	// Log the censored regex pattern instead of the real one.
+	
 	fmt.Printf("Using regex pattern: %s\n", censoredRegexDisplay)
 
 	matches := regex.FindStringSubmatch(logFileName)
@@ -841,7 +826,7 @@ func GenerateHTMLReport(logFilePath string, scannedFileCount int) error {
 	categories, severityCounts := generateCategoryStats(findings)
 	securityScore := calculateSecurityScore(findings)
 
-	// Rapor oluşturma süresini hesapla ve okunaklı biçimde formatla.
+	
 	duration := time.Since(startTime)
 	var generationTime string
 	if duration < time.Second {
@@ -1214,9 +1199,6 @@ func GenerateHTMLReport(logFilePath string, scannedFileCount int) error {
 	return nil
 }
 
-// -------------------------------------------------------
-// Main Fonksiyonu
-// -------------------------------------------------------
 
 func main() {
 	if len(os.Args) < 2 {
