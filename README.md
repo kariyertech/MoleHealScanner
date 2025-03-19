@@ -46,3 +46,7 @@ MoleHealScanner is a sophisticated security scanning tool designed to detect sen
 ```bash
 go run main.go <directory_path> --report
 ```
+
+## Special Thanks
+
+@DevSecOps Team
