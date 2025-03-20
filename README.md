@@ -3,7 +3,7 @@
 [![English](https://img.shields.io/badge/lang-English-blue.svg)](README.md) [![Turkish](https://img.shields.io/badge/lang-Türkçe-red.svg)](README_TR.md)
 
 <p align="center">
-  <img src="./logo.png" alt="Logo">
+  <img src="./mascot.png" alt="Logo">
 </p>
 
 
