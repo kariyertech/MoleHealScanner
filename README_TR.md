@@ -1,7 +1,9 @@
 # MoleHealScanner - Gelişmiş Güvenlik Tarayıcısı
 
 [![English](https://img.shields.io/badge/lang-English-blue.svg)](README.md) [![Turkish](https://img.shields.io/badge/lang-Türkçe-red.svg)](README_TR.md)
-![Proje Logosu](./kariyer-logo.png)
+<p align="center">
+  <img src="./mascot.png" alt="Logo">
+</p>
 MoleHealScanner, kod tabanlarında hassas veri desenlerini tespit etmek için tasarlanmış gelişmiş bir güvenlik tarama aracıdır. Paralel işleme yetenekleri ve güvenlik metrikleri ve görselleştirmeleri içeren ayrıntılı, etkileşimli HTML raporları sunar.
 
 ## Özellikler
