@@ -22,6 +22,11 @@ MoleHealScanner, kod tabanlarında hassas veri desenlerini tespit etmek için ta
 - Yanlış pozitifleri azaltmak için Shannon entropi analizi
 
 ### Güvenlik Raporlama
+<div align="center">
+<img src="https://i.imgur.com/8Wmgszn.png" align="center" style="width: 100%" alt="PNG" />
+</div> 
+
+<p></p>
 - Şunları içeren etkileşimli HTML raporları:
   - Genel Güvenlik Puanı (0-100)
   - Risk Seviyesi Değerlendirmesi
