@@ -25,10 +25,11 @@ MoleHealScanner is a sophisticated security scanning tool designed to detect sen
 - Shannon entropy analysis to reduce false positives
 
 ### Security Reporting
-![HTML Reports](https://i.hizliresim.com/90q72fp.png)
 <div align="center">
 <img src="https://i.imgur.com/8Wmgszn.png" align="center" style="width: 100%" alt="PNG" />
 </div> 
+
+
 
 - Interactive HTML reports with:
   - Overall Security Score (0-100)
