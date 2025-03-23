@@ -27,6 +27,7 @@ MoleHealScanner, kod tabanlarında hassas veri desenlerini tespit etmek için ta
 </div> 
 
 <p></p>
+
 - Şunları içeren etkileşimli HTML raporları:
   - Genel Güvenlik Puanı (0-100)
   - Risk Seviyesi Değerlendirmesi
