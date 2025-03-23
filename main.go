@@ -295,7 +295,6 @@ func getRiskLevel(score int) string {
 	}
 }
 
-
 var regexPatterns = map[string]string{
 	"Cloudinary":                          `cloudinary://.*`,
 	"Firebase URL":                        `.*firebaseio\.com`,
@@ -543,9 +542,7 @@ var regexPatterns = map[string]string{
 	"zendesk-secret-key":                  `(?i)[\w.-]{0,50}?(?:zendesk)(?:[ \t\w.-]{0,20})[\s'"]{0,3}(?:=|>|:{1,3}=|\|\||:|=>|\?=|,)[\x60'"\s=]{0,5}([a-z0-9]{40})(?:[\x60'"\s;]|\\[nr]|$)`,
 }
 
-
 var compiledRegexPatterns = compileRegexPatterns(regexPatterns)
-
 
 func scanDirectoryParallel(directory string) ([]Finding, int) {
 	var findings []Finding
@@ -609,7 +606,6 @@ func scanDirectoryParallel(directory string) ([]Finding, int) {
 	return findings, scannedFiles
 }
 
-
 func processFileLineByLine(filePath string) []Finding {
 	var findings []Finding
 	file, err := os.Open(filePath)
@@ -648,7 +644,6 @@ func processFileLineByLine(filePath string) []Finding {
 	return findings
 }
 
-
 func logFindings(findings []Finding, directory string) string {
 	dirName := filepath.Base(directory)
 	if dirName == "." {
@@ -674,13 +669,11 @@ func logFindings(findings []Finding, directory string) string {
 	return logFileName
 }
 
-
 type FindingCategory struct {
 	Name     string
 	Severity SeverityLevel
 	Count    int
 }
-
 
 type ReportData struct {
 	ScanDate         string
@@ -726,34 +719,51 @@ func calculateSecurityScore(findings []Finding) int {
 	if len(findings) == 0 {
 		return 100
 	}
+
+	// Count findings by severity level
 	severityCounts := make(map[SeverityLevel]int)
 	for _, finding := range findings {
 		sev := getSeverity(finding.Name)
 		severityCounts[sev]++
 	}
-	totalWeight := 0
-	totalImpact := 0
+
+	// Define weights for each severity level
 	weights := map[SeverityLevel]int{
 		Low:      1,
 		Medium:   3,
 		High:     6,
 		Critical: 10,
 	}
+
+	// Calculate weighted impact
+	totalWeight := 0
+	totalImpact := 0
+
+	// Process each severity level
 	for severity, count := range severityCounts {
 		weight := weights[severity]
 		totalWeight += weight * count
 		totalImpact += weight * count * int(severity)
 	}
+
+	// Calculate base score
 	baseScore := 100
 	if totalWeight > 0 {
-		impactPercentage := float64(totalImpact) / float64(totalWeight*4)
-		baseScore -= int(impactPercentage * 100)
+		// Use a more stable calculation method with proper scaling
+		// Maximum possible severity is 4 (Critical)
+		maximumPossibleImpact := float64(totalWeight * 4) // 4 is the maximum severity level
+		impactPercentage := float64(totalImpact) / maximumPossibleImpact
+		// Scale the impact to reduce the score proportionally
+		baseScore = int(100.0 * (1.0 - impactPercentage))
 	}
+
+	// Ensure score stays within valid range
 	if baseScore < 0 {
 		baseScore = 0
 	} else if baseScore > 100 {
 		baseScore = 100
 	}
+
 	return baseScore
 }
 
@@ -799,23 +809,20 @@ func parseLogFile(logFilePath string) ([]Finding, error) {
 	return findings, nil
 }
 
-
 func GenerateHTMLReport(logFilePath string, scannedFileCount int) error {
-	startTime := time.Now() 
+	startTime := time.Now()
 	findings, err := parseLogFile(logFilePath)
 	if err != nil {
 		return fmt.Errorf("log dosyası ayrıştırılırken hata: %v", err)
 	}
 	logFileName := filepath.Base(logFilePath)
 
-	
 	const realRegexPattern = "scan_results_(.+)\\.log"
-	
+
 	const censoredRegexDisplay = "*********(.+)\\.log"
 
-	
 	regex := regexp.MustCompile(realRegexPattern)
-	
+
 	fmt.Printf("Using regex pattern: %s\n", censoredRegexDisplay)
 
 	matches := regex.FindStringSubmatch(logFileName)
@@ -826,7 +833,6 @@ func GenerateHTMLReport(logFilePath string, scannedFileCount int) error {
 	categories, severityCounts := generateCategoryStats(findings)
 	securityScore := calculateSecurityScore(findings)
 
-	
 	duration := time.Since(startTime)
 	var generationTime string
 	if duration < time.Second {
@@ -845,7 +851,7 @@ func GenerateHTMLReport(logFilePath string, scannedFileCount int) error {
 		Findings:         findings,
 		Categories:       categories,
 		SeverityCounts:   severityCounts,
-		LogoURL:          "kariyer-logo.png",
+		LogoURL:          "mascot.png",
 		GenerationTime:   generationTime,
 	}
 	reportFileName := fmt.Sprintf("security_report_%s.html", scanTarget)
@@ -961,9 +967,10 @@ func GenerateHTMLReport(logFilePath string, scannedFileCount int) error {
         <p>Scanned Files: {{.ScannedFileCount}}</p>
         <p>Report generation time: {{.GenerationTime}}</p>
       </div>
-      <div class="header-right">
-        <img src="{{.LogoURL}}" alt="Logo" class="logo">
-      </div>
+<div class="header-right">
+  <img src="{{.LogoURL}}" style="width: 150px; height: auto;" alt="Logo" class="logo">
+</div>
+
     </div>
     <div class="dashboard-grid">
       <div class="dashboard-card score-card">
@@ -1139,7 +1146,7 @@ func GenerateHTMLReport(logFilePath string, scannedFileCount int) error {
           if (filtered.length > 0) {
             severityCard.style.display = 'block';
             var details = filtered.map(function(cat) {
-              return cat.name + ": " + cat.count + " tane var";
+              return cat.name + ": " + cat.count;
             }).join(" | ");
             severityCard.textContent = details;
           } else {
@@ -1156,7 +1163,7 @@ func GenerateHTMLReport(logFilePath string, scannedFileCount int) error {
           var count = categoriesData[selected] || 0;
           categoryCard.style.display = 'block';
           var selectedText = this.options[this.selectedIndex].text;
-          categoryCard.textContent = selectedText + ": " + count + " tane var";
+          categoryCard.textContent = selectedText + ": " + count;
         }
       });
     });
@@ -1198,7 +1205,6 @@ func GenerateHTMLReport(logFilePath string, scannedFileCount int) error {
 	fmt.Printf("Güvenlik raporu '%s' dosyasına kaydedildi.\n", reportFileName)
 	return nil
 }
-
 
 func main() {
 	if len(os.Args) < 2 {
