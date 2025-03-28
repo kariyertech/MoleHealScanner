@@ -1060,7 +1060,7 @@ func GenerateHTMLReport(logFilePath string, scannedFileCount int) error {
   </div>
   
   <div class="footer">
-    <p>github@dogukankurnaz DevSecOps @kariyer.net</p>
+    <p>DevSecOps Team @<a href="https://www.kariyer.net" target="_blank">kariyer.net</a></p>
     <div class="footer-divider"></div>
     <p>Generated on {{.ScanDate}}</p>
     <p>Report generation time: {{.GenerationTime}}</p>
