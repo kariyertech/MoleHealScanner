@@ -52,9 +52,9 @@ MoleHealScanner is a sophisticated security scanning tool designed to detect sen
 - Higher entropy values indicate more random strings, which are more likely to be actual secrets
 
 ## Usage
-```bash
-go run main.go <directory_path> --report
-```
+<div align="center">
+<img src="https://i.imgur.com/cYSJnaF.gif" align="center" style="width: 100%" alt="PNG" />
+</div> 
 
 ## Special Thanks
 
