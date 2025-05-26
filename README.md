@@ -10,7 +10,7 @@
 MoleHealScanner is a sophisticated security scanning tool designed to detect sensitive data patterns in codebases. It features parallel processing capabilities and generates detailed, interactive HTML reports with security metrics and visualizations.
 
 ## Usage
-<div align="right">
+<div align="left">
 <img src="https://i.imgur.com/cYSJnaF.gif" align="center" style="width: 100%" alt="PNG" />
 </div> 
 
