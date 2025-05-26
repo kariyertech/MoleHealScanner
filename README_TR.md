@@ -6,6 +6,12 @@
 </p>
 MoleHealScanner, kod tabanlarında hassas veri desenlerini tespit etmek için tasarlanmış gelişmiş bir güvenlik tarama aracıdır. Paralel işleme yetenekleri ve güvenlik metrikleri ve görselleştirmeleri içeren ayrıntılı, etkileşimli HTML raporları sunar.
 
+## Kullanım
+<div align="left">
+<img src="https://i.imgur.com/cYSJnaF.gif" align="center" style="width: 100%" alt="PNG" />
+</div> 
+
+
 ## Özellikler
 
 ### Tarama Yetenekleri
@@ -23,7 +29,7 @@ MoleHealScanner, kod tabanlarında hassas veri desenlerini tespit etmek için ta
 
 ### Güvenlik Raporlama
 <div align="center">
-<img src="https://i.imgur.com/8Wmgszn.png" align="center" style="width: 100%" alt="PNG" />
+<img src="https://i.imgur.com/Wt1KFa3.png" align="center" style="width: 100%" alt="PNG" />
 </div> 
 
 <p></p>
