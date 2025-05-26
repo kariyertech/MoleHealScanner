@@ -26,7 +26,7 @@ MoleHealScanner is a sophisticated security scanning tool designed to detect sen
 
 ### Security Reporting
 <div align="center">
-<img src="https://i.imgur.com/8Wmgszn.png" align="center" style="width: 100%" alt="PNG" />
+<img src="https://i.imgur.com/Wt1KFa3.png" align="center" style="width: 100%" alt="PNG" />
 </div> 
 
 <p></p>
