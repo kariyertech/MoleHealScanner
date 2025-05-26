@@ -9,6 +9,11 @@
 
 MoleHealScanner is a sophisticated security scanning tool designed to detect sensitive data patterns in codebases. It features parallel processing capabilities and generates detailed, interactive HTML reports with security metrics and visualizations.
 
+## Usage
+<div align="right">
+<img src="https://i.imgur.com/cYSJnaF.gif" align="center" style="width: 100%" alt="PNG" />
+</div> 
+
 ## Features
 
 ### Scanning Capabilities
@@ -51,10 +56,6 @@ MoleHealScanner is a sophisticated security scanning tool designed to detect sen
 - Entropy threshold filtering (default: 3.5) to eliminate low-entropy matches
 - Higher entropy values indicate more random strings, which are more likely to be actual secrets
 
-## Usage
-<div align="center">
-<img src="https://i.imgur.com/cYSJnaF.gif" align="center" style="width: 100%" alt="PNG" />
-</div> 
 
 ## Special Thanks
 
