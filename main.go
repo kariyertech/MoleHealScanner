@@ -460,7 +460,7 @@ var regexPatterns = map[string]string{
 	"mailgun-signing-key":                 `(?i)[\w.-]{0,50}?(?:mailgun)(?:[ \t\w.-]{0,20})[\s'"]{0,3}(?:=|>|:{1,3}=|\|\||:|=>|\?=|,)[\x60'"\s=]{0,5}([a-h0-9]{32}-[a-h0-9]{8}-[a-h0-9]{8})(?:[\x60'"\s;]|\\[nr]|$)`,
 	"mapbox-api-token":                    `(?i)[\w.-]{0,50}?(?:mapbox)(?:[ \t\w.-]{0,20})[\s'"]{0,3}(?:=|>|:{1,3}=|\|\||:|=>|\?=|,)[\x60'"\s=]{0,5}(pk\.[a-z0-9]{60}\.[a-z0-9]{22})(?:[\x60'"\s;]|\\[nr]|$)`,
 	"mattermost-access-token":             `(?i)[\w.-]{0,50}?(?:mattermost)(?:[ \t\w.-]{0,20})[\s'"]{0,3}(?:=|>|:{1,3}=|\|\||:|=>|\?=|,)[\x60'"\s=]{0,5}([a-z0-9]{26})(?:[\x60'"\s;]|\\[nr]|$)`,
-	"messagebird-api-token":               `(?i)[\w.-]{0,50}?(?:message[_-]?bird)(?:[ \t\w.-]{0,20})[\s'"]{0,3}(?:=|>|:{1,3}=|\|\||:|=>|\?=|,)[\x60'"\s=]{0,5}([a-z0-9]{25})(?:[\x60'"\s;]|\\[nr]|$)`,
+	"messagebird-api-key":                `(?i)[\w.-]{0,50}?(?:message[_-]?bird)(?:[ \t\w.-]{0,20})[\s'"]{0,3}(?:=|>|:{1,3}=|\|\||:|=>|\?=|,)[\x60'"\s=]{0,5}([a-z0-9]{25})(?:[\x60'"\s;]|\\[nr]|$)`,
 	"messagebird-client-id":               `(?i)[\w.-]{0,50}?(?:message[_-]?bird)(?:[ \t\w.-]{0,20})[\s'"]{0,3}(?:=|>|:{1,3}=|\|\||:|=>|\?=|,)[\x60'"\s=]{0,5}([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})(?:[\x60'"\s;]|\\[nr]|$)`,
 	"microsoft-teams-webhook":             `https://[a-z0-9]+\.webhook\.office\.com/webhookb2/[a-z0-9]{8}-([a-z0-9]{4}-){3}[a-z0-9]{12}@[a-z0-9]{8}-([a-z0-9]{4}-){3}[a-z0-9]{12}/IncomingWebhook/[a-z0-9]{32}/[a-z0-9]{8}-([a-z0-9]{4}-){3}[a-z0-9]{12}`,
 	"netlify-access-token":                `(?i)[\w.-]{0,50}?(?:netlify)(?:[ \t\w.-]{0,20})[\s'"]{0,3}(?:=|>|:{1,3}=|\|\||:|=>|\?=|,)[\x60'"\s=]{0,5}([a-z0-9=_\-]{40,46})(?:[\x60'"\s;]|\\[nr]|$)`,
@@ -515,9 +515,9 @@ var regexPatterns = map[string]string{
 	"slack-legacy-bot-token":              `xoxb-[0-9]{8,14}-[a-zA-Z0-9]{18,26}`,
 	"slack-legacy-token":                  `xox[os]-\d+-\d+-\d+-[a-fA-F\d]+`,
 	"slack-legacy-workspace-token":        `xox[ar]-(?:\d-)?[0-9a-zA-Z]{8,48}`,
-	"slack-user-token":                    `xox[pe](?:-[0-9]{10,13}){3}-[a-zA-Z0-9-]{28,34}`,
-	"slack-webhook-url":                   `(?:https?://)?hooks.slack.com/(?:services|workflows)/[A-Za-z0-9+/]{43,46}`,
-	"snyk-api-token":                      `(?i)[\w.-]{0,50}?(?:snyk[_.-]?(?:(?:api|oauth)[_.-]?)?(?:key|token))(?:[ \t\w.-]{0,20})[\s'"]{0,3}(?:=|>|:{1,3}=|\|\||:|=>|\?=|,)[\x60'"\s=]{0,5}([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})(?:[\x60'"\s;]|\\[nr]|$)`,
+	"slack-token":                        `xox[pe](?:-[0-9]{10,13}){3}-[a-zA-Z0-9-]{28,34}`,
+	"slack-user-token":                   `xox[pe](?:-[0-9]{10,13}){3}-[a-zA-Z0-9-]{28,34}`,
+	"snyk-api-token":                     `(?i)[\w.-]{0,50}?(?:snyk[_.-]?(?:(?:api|oauth)[_.-]?)?(?:key|token))(?:[ \t\w.-]{0,20})[\s'"]{0,3}(?:=|>|:{1,3}=|\|\||:|=>|\?=|,)[\x60'"\s=]{0,5}([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})(?:[\x60'"\s;]|\\[nr]|$)`,
 	"sonar-api-token":                     `(?i)[\w.-]{0,50}?(?:sonar[_.-]?(login|token))(?:[ \t\w.-]{0,20})[\s'"]{0,3}(?:=|>|:{1,3}=|\|\||:|=>|\?=|,)[\x60'"\s=]{0,5}([a-z0-9=_\-]{40})(?:[\x60'"\s;]|\\[nr]|$)`,
 	"sourcegraph-access-token":            `(?i)\b(\b(sgp_(?:[a-fA-F0-9]{16}|local)_[a-fA-F0-9]{40}|sgp_[a-fA-F0-9]{40}|[a-fA-F0-9]{40})\b)(?:[\x60'"\s;]|\\[nr]|$)`,
 	"square-access-token":                 `\b((?:sk|rk)_(?:test|live|prod)_[a-zA-Z0-9]{10,99})(?:[\x60'"\s;]|\\[nr]|$)`,
@@ -867,305 +867,1358 @@ func GenerateHTMLReport(logFilePath string, scannedFileCount int) error {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Security Scan Report - {{.ScanDate}}</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <title>MoleHealScanner | Security Report</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
   <style>
     :root {
-      --critical: #dc3545;
-      --high: #fd7e14;
+      --primary: #4361ee;
+      --primary-light: #4895ef;
+      --secondary: #3f37c9;
+      --accent: #f72585;
+      --critical: #f72585;
+      --high: #f86642;
       --medium: #ffc107;
-      --low: #20c997;
-      --bg-primary: #f8f9fa;
-      --bg-secondary: #ffffff;
-      --text-primary: #212529;
-      --text-secondary: #6c757d;
-      --border-color: #dee2e6;
+      --low: #4cc9f0;
+      --success: #48cae4;
+      --dark: #0b132b;
+      --light: #f8f9fa;
+      --border-radius: 12px;
+      --card-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
+      --transition: all 0.3s ease;
     }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Inter', sans-serif; line-height: 1.6; color: var(--text-primary); background: var(--bg-primary); padding: 2rem; }
-    .container { max-width: 1200px; margin: 0 auto; }
-    .header { 
-      display: flex; justify-content: space-between; align-items: center;
-      background: var(--bg-secondary); padding: 2rem; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 2rem;
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-    .header-left { flex: 1; }
-    .header-right { flex-shrink: 0; }
-    .logo { max-height: 80px; }
-    .dashboard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
-    .dashboard-card { background: var(--bg-secondary); padding: 1.5rem; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-    .score-card { text-align: center; padding: 2rem; }
-    .score-number { font-size: 3rem; font-weight: 600; margin-bottom: 0.5rem; }
-    .risk-label { display: inline-block; padding: 0.5rem 1rem; border-radius: 20px; font-weight: 500; margin-top: 1rem; }
-    .risk-critical { background: var(--critical); color: white; }
-    .risk-high { background: var(--high); color: white; }
-    .risk-medium { background: var(--medium); color: var(--text-primary); }
-    .risk-low { background: var(--low); color: white; }
-    .controls-section { background: var(--bg-secondary); padding: 1rem; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 2rem; }
-    .filter-controls { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
-    .search-box, .filter-select { padding: 0.5rem; border: 1px solid var(--border-color); border-radius: 4px; font-family: inherit; }
-    .selected-category-card, .selected-severity-card {
-      background: var(--bg-secondary);
-      border: 1px solid var(--border-color);
-      border-radius: 4px;
-      padding: 0.5rem 1rem;
-      font-weight: 600;
-      margin-left: 1rem;
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background-color: #f6f8fc;
+      color: #333;
+      min-height: 100vh;
+      overflow-x: hidden; /* Prevent horizontal scrolling */
+      max-width: 100%;
     }
-    .findings-section { margin-top: 2rem; }
-    .findings-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
-    .finding-card { background: var(--bg-secondary); border-radius: 10px; margin-bottom: 1rem; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-    .finding-header { padding: 1rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); }
-    .severity-badge { padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.875rem; font-weight: 500; }
-    .severity-critical { background: var(--critical); color: white; }
-    .severity-high { background: var(--high); color: white; }
-    .severity-medium { background: var(--medium); color: var(--text-primary); }
-    .severity-low { background: var(--low); color: white; }
-    .finding-content { padding: 1rem; }
-    .code-snippet { font-family: 'Monaco', monospace; background: #2b2b2b; color: #f8f8f2; padding: 1rem; border-radius: 6px; margin: 0.5rem 0; }
-    .line-number { color: #999; margin-right: 1rem; user-select: none; }
-    .file-path { color: var(--text-secondary); font-size: 0.875rem; margin-top: 0.5rem; }
-    .chart-container { position: relative; height: 300px; }
-    .no-results { text-align: center; padding: 2rem; color: var(--text-secondary); }
-    .summary-card { text-align: center; }
-    .summary-content { display: flex; flex-wrap: wrap; justify-content: space-around; margin-top: 1rem; }
-    .summary-item { flex: 1; min-width: 120px; margin: 0.5rem; }
-    .summary-label { display: block; font-weight: 600; margin-bottom: 0.5rem; }
-    .summary-value { font-size: 1.5rem; font-weight: 700; }
-    /* Footer styles */
-    .footer {
-      margin-top: 3rem;
+
+    .dashboard {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      min-height: 100vh;
+      width: 100%;
+      overflow-x: hidden; /* Prevent horizontal scrolling */
+    }
+
+    /* Sidebar */
+    .sidebar {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
       padding: 1.5rem;
-      background: var(--bg-secondary);
-      border-radius: 10px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: fixed;
+      width: 260px;
+      height: 100vh;
+      overflow-y: auto;
+      z-index: 10;
+      transition: transform 0.3s ease;
+      display: flex;
+      flex-direction: column; /* Allow flex positioning of elements */
+    }
+    
+    /* Add this for the sidebar footer */
+    .sidebar-footer {
+      margin-top: auto; /* Push to bottom of sidebar */
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.85rem;
+      opacity: 0.7;
       text-align: center;
-      color: var(--text-secondary);
+    }
+    
+    .sidebar-footer a {
+      color: white;
+      text-decoration: none;
+    }
+    
+    .sidebar-footer a:hover {
+      text-decoration: underline;
+    }
+
+    .sidebar-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-bottom: 1.5rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background-color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      color: var(--primary);
+    }
+
+    .logo-text {
+      font-weight: 600;
+      font-size: 1.25rem;
+      letter-spacing: 0.5px;
+    }
+
+    .logo-text span {
+      opacity: 0.7;
+      font-weight: 400;
+    }
+
+    .sidebar-section {
+      margin-bottom: 2rem;
+    }
+
+    .sidebar-section-title {
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      opacity: 0.7;
+      margin-bottom: 1rem;
+    }
+
+    .scan-info {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: var(--border-radius);
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .scan-info-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 1rem;
       font-size: 0.9rem;
     }
-    .footer p {
-      margin: 0.5rem 0;
+
+    .scan-info-item:last-child {
+      margin-bottom: 0;
     }
-    .footer-divider {
-      margin: 0.5rem auto;
+
+    .scan-info-icon {
+      font-size: 1rem;
+      opacity: 0.8;
+      width: 20px;
+    }
+
+    .risk-indicator {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: var(--border-radius);
+      padding: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .risk-label {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      opacity: 0.7;
+      margin-bottom: 0.5rem;
+    }
+
+    .risk-score {
+      font-size: 3.5rem;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .risk-level {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 0.4rem 1rem;
+      border-radius: 50px;
+    }
+
+    .risk-critical { background-color: var(--critical); color: white; }
+    .risk-high { background-color: var(--high); color: white; }
+    .risk-medium { background-color: var(--medium); color: #333; }
+    .risk-low { background-color: var(--low); color: white; }
+
+    /* Main Content */
+    .main-content {
+      grid-column: 2;
+      padding: 2rem;
+      width: 100%;
+      overflow-x: hidden; /* Prevent horizontal overflow */
+    }
+
+    .page-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .page-title {
+      font-weight: 700;
+      font-size: 1.75rem;
+      color: var(--dark);
+    }
+
+    .export-btn {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      border-radius: var(--border-radius);
+      padding: 0.6rem 1.25rem;
+      font-weight: 500;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .export-btn:hover {
+      background-color: var(--secondary);
+    }
+
+    /* Stats Cards */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .stat-card {
+      background-color: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--card-shadow);
+      padding: 1.5rem;
+      transition: var(--transition);
+    }
+
+    .stat-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .stat-icon {
       width: 50px;
-      border-top: 2px solid var(--border-color);
+      height: 50px;
+      border-radius: 12px;
+      background-color: rgba(67, 97, 238, 0.1);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
     }
+
+    .stat-title {
+      font-size: 0.9rem;
+      color: #666;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-value {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--dark);
+    }
+
+    .stat-critical .stat-icon { background-color: rgba(247, 37, 133, 0.1); color: var(--critical); }
+    .stat-high .stat-icon { background-color: rgba(248, 102, 66, 0.1); color: var(--high); }
+    .stat-medium .stat-icon { background-color: rgba(255, 193, 7, 0.1); color: var(--medium); }
+    .stat-low .stat-icon { background-color: rgba(76, 201, 240, 0.1); color: var(--low); }
+
+    /* Chart Section */
+    .chart-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .chart-card {
+      background-color: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--card-shadow);
+      padding: 1.5rem;
+    }
+
+    .chart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .chart-title {
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: var(--dark);
+    }
+
+    .chart-body {
+      height: 260px;
+    }
+
+    /* Findings Table */
+    .findings-card {
+      background-color: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--card-shadow);
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .filter-controls {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .search-input {
+      flex-grow: 1;
+      position: relative;
+    }
+
+    .search-input input {
+      width: 100%;
+      padding: 0.75rem 1rem 0.75rem 3rem;
+      border-radius: var(--border-radius);
+      border: 1px solid #e0e0e0;
+      background-color: #f9f9f9;
+      transition: var(--transition);
+    }
+
+    .search-input input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #999;
+    }
+
+    .severity-filter,
+    .category-filter {
+      position: relative;
+    }
+
+    .severity-filter select,
+    .category-filter select {
+      padding: 0.75rem 2rem 0.75rem 1rem;
+      border-radius: var(--border-radius);
+      border: 1px solid #e0e0e0;
+      background-color: #f9f9f9;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      transition: var(--transition);
+    }
+
+    .severity-filter select:focus,
+    .category-filter select:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
+    }
+
+    .select-icon {
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #999;
+      pointer-events: none;
+    }
+
+    .finding-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      table-layout: fixed; /* Fixed layout helps with responsive tables */
+      font-size: 0.9rem; /* Slightly smaller base font size */
+    }
+
+    .finding-table thead th {
+      text-align: left;
+      padding: 0.75rem;
+      font-weight: 600;
+      color: #555;
+      border-bottom: 1px solid #eee;
+      white-space: nowrap;
+    }
+
+    .finding-table tbody tr {
+      transition: var(--transition);
+    }
+
+    .finding-table tbody tr:hover {
+      background-color: #f8f9fa;
+    }
+
+    .finding-table td {
+      padding: 0.75rem;
+      border-bottom: 1px solid #eee;
+      vertical-align: top;
+    }
+
+    /* Column widths */
+    .finding-table th:nth-child(1),
+    .finding-table td:nth-child(1) {
+      width: 30%;
+    }
+    
+    .finding-table th:nth-child(2),
+    .finding-table td:nth-child(2) {
+      width: 15%;
+    }
+    
+    .finding-table th:nth-child(3),
+    .finding-table td:nth-child(3) {
+      width: 55%; 
+    }
+    
+    .finding-table th:nth-child(4),
+    .finding-table td:nth-child(4) {
+      display: none; /* Hide the action column */
+    }
+
+    .finding-name {
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 0.25rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .finding-file {
+      font-size: 0.8rem;
+      color: #666;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .match-code {
+      display: block;
+      font-family: 'Roboto Mono', monospace;
+      font-size: 0.8rem;
+      padding: 0.4rem;
+      background-color: #f5f5f5;
+      border-radius: 4px;
+      margin-top: 0.4rem;
+      white-space: nowrap;
+      overflow-x: auto; /* Allow scrolling within the code block */
+      max-width: 100%;
+      text-overflow: ellipsis;
+    }
+
+    .severity-badge {
+      display: inline-block;
+      padding: 0.25rem 0.6rem;
+      border-radius: 50px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
+
+    .severity-badge-critical { background-color: var(--critical); color: white; }
+    .severity-badge-high { background-color: var(--high); color: white; }
+    .severity-badge-medium { background-color: var(--medium); color: #333; }
+    .severity-badge-low { background-color: var(--low); color: white; }
+
+    .view-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background-color: var(--primary-light);
+      color: white;
+      border: none;
+      transition: var(--transition);
+    }
+
+    .view-btn:hover {
+      background-color: var(--primary);
+      transform: scale(1.1);
+    }
+
+    /* Modal */
+    .modal-backdrop {
+      display: none;
+    }
+
+    .modal-container {
+      display: none;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem;
+      border-bottom: 1px solid #eee;
+    }
+
+    .modal-title {
+      font-weight: 600;
+      font-size: 1.25rem;
+      color: var(--dark);
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #666;
+    }
+
+    .modal-body {
+      padding: 1.5rem;
+    }
+
+    .modal-info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .info-item {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .info-label {
+      font-size: 0.85rem;
+      color: #666;
+      margin-bottom: 0.25rem;
+    }
+
+    .info-value {
+      font-weight: 500;
+    }
+
+    .code-block {
+      background-color: #1e1e1e;
+      color: #fff;
+      padding: 1.5rem;
+      border-radius: 8px;
+      font-family: 'Roboto Mono', monospace;
+      font-size: 0.9rem;
+      overflow-x: auto;
+      position: relative;
+    }
+
+    .line-number {
+      color: #888;
+      margin-right: 1rem;
+      user-select: none;
+    }
+
+    .code-label {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      background-color: rgba(255, 255, 255, 0.1);
+      font-size: 0.7rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+    }
+
+    /* Page loader */
+    .page-loader {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(255, 255, 255, 0.8);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .loader {
+      width: 48px;
+      height: 48px;
+      border: 5px solid var(--primary);
+      border-bottom-color: transparent;
+      border-radius: 50%;
+      animation: rotation 1s linear infinite;
+    }
+
+    @keyframes rotation {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* No Findings State */
+    .no-findings {
+      display: none;
+      text-align: center;
+      padding: 3rem;
+      border: 2px dashed #ddd;
+      border-radius: var(--border-radius);
+    }
+
+    .no-findings-icon {
+      font-size: 3rem;
+      color: #ccc;
+      margin-bottom: 1rem;
+    }
+
+    .no-findings-title {
+      font-weight: 600;
+      color: #666;
+      margin-bottom: 0.5rem;
+    }
+
+    .no-findings-message {
+      color: #999;
+    }
+
+    /* Responsive */
+    @media (max-width: 1200px) {
+      .finding-table th, 
+      .finding-table td {
+        padding: 0.75rem;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .finding-table th, 
+      .finding-table td {
+        padding: 0.5rem;
+        font-size: 0.9rem;
+      }
+      
+      .match-code {
+        font-size: 0.8rem;
+      }
+    }
+    
+    /* Better responsive behavior */
     @media (max-width: 768px) {
-      body { padding: 1rem; }
-      .dashboard-grid { grid-template-columns: 1fr; }
+      .dashboard {
+        grid-template-columns: 1fr;
+      }
+      
+      .sidebar {
+        transform: translateX(-100%); /* Hide sidebar by default on mobile */
+        width: 100%;
+        max-width: 300px;
+      }
+      
+      .sidebar.show {
+        transform: translateX(0);
+      }
+      
+      .main-content {
+        grid-column: 1;
+        padding: 1.5rem 1rem; /* Reduce padding on small screens */
+        margin-left: 0;
+      }
+      
+      .stats-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 1rem;
+      }
+      
+      .chart-container {
+        grid-template-columns: 1fr;
+      }
+      
+      .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+      
+      .export-btn {
+        align-self: stretch;
+        width: 100%;
+        justify-content: center;
+      }
+      
+      /* Responsive table adjustments */
+      .finding-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+      
+      .finding-table thead {
+        display: none; /* Hide table headers on mobile */
+      }
+      
+      .finding-table tbody tr {
+        display: block;
+        border-bottom: 1px solid #eee;
+        padding: 1rem 0;
+      }
+      
+      .finding-table td {
+        display: block;
+        text-align: left;
+        padding: 0.5rem 1rem;
+        border: none;
+      }
+      
+      .finding-table td:before {
+        content: attr(data-label);
+        font-weight: 600;
+        display: inline-block;
+        width: 100px;
+      }
+      
+      .filter-controls {
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+    }
+    
+    /* Add a mobile menu toggle button */
+    .menu-toggle {
+      display: none;
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      z-index: 1000;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: flex;
+      }
+      
+      .main-content {
+        padding-top: 4rem; /* Make room for the menu button */
+      }
+    }
+
+    .match-line {
+      font-size: 0.8rem;
+      color: #666;
+      margin-bottom: 0.25rem;
+    }
+
+    /* For very small screens, make sure the table fits */
+    @media (max-width: 576px) {
+      .finding-table {
+        font-size: 0.8rem;
+      }
+      
+      .finding-table td {
+        padding: 0.5rem;
+      }
+      
+      .finding-name {
+        font-size: 0.85rem;
+      }
+      
+      .finding-file, 
+      .match-line {
+        font-size: 0.75rem;
+      }
+      
+      .match-code {
+        font-size: 0.75rem;
+        padding: 0.3rem;
+      }
+      
+      .severity-badge {
+        font-size: 0.65rem;
+        padding: 0.2rem 0.5rem;
+      }
+      
+      .view-btn {
+        width: 28px;
+        height: 28px;
+      }
+    }
+    
+    /* Fix mobile stacked table view for better readability */
+    @media (max-width: 768px) {
+      .finding-table tbody tr {
+        padding: 0.75rem 0;
+      }
+      
+      .finding-table td {
+        padding: 0.5rem 0.75rem;
+      }
+      
+      .finding-table td:before {
+        content: attr(data-label);
+        font-weight: 600;
+        display: inline-block;
+        width: auto;
+        min-width: 80px;
+        margin-bottom: 0.25rem;
+        color: #555;
+      }
+      
+      .finding-table td[data-label="Action"] {
+        text-align: left;
+      }
+    }
+
+    /* Hide modal elements */
+    .modal-backdrop,
+    .modal-container,
+    .view-btn,
+    #findingModal {
+      display: none !important;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="header">
-      <div class="header-left">
-        <h1>Sensitive Data Scan Report</h1>
-        <p>Scan completed on {{.ScanDate}}</p>
-        <p>Target: {{.ScanTarget}}</p>
-        <p>Scanned Files: {{.ScannedFileCount}}</p>
-        <p>Report generation time: {{.GenerationTime}}</p>
-      </div>
-<div class="header-right">
-  <img src="{{.LogoURL}}" style="width: 150px; height: auto;" alt="Logo" class="logo">
-</div>
+  <!-- Page Loader -->
+  <div class="page-loader">
+    <div class="loader"></div>
+  </div>
 
-    </div>
-    <div class="dashboard-grid">
-      <div class="dashboard-card score-card">
-        <h2>Security Score</h2>
-        <div class="score-number">{{.SecurityScore}}</div>
-        <div class="risk-label risk-{{toLowerCase .RiskLevel}}">{{.RiskLevel}}</div>
-      </div>
-      <div class="dashboard-card">
-        <h2>Severity Distribution</h2>
-        <div class="chart-container">
-          <canvas id="severityChart"></canvas>
+  <!-- Mobile Menu Toggle -->
+  <button class="menu-toggle" id="menuToggle">
+    <i class="bi bi-list"></i>
+  </button>
+
+  <div class="dashboard">
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-logo">
+        <div class="logo-icon">
+          <i class="bi bi-shield-check"></i>
         </div>
+        <div class="logo-text">MoleHeal<span>Scanner</span></div>
       </div>
-      <div class="dashboard-card summary-card">
-        <h2>Summary</h2>
-        <div class="summary-content">
-          <div class="summary-item">
-            <span class="summary-label">Total Findings</span>
-            <span class="summary-value">{{.TotalFindings}}</span>
+
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Scan Information</div>
+        <div class="scan-info">
+          <div class="scan-info-item">
+            <i class="bi bi-calendar-event scan-info-icon"></i>
+            <div>{{.ScanDate}}</div>
           </div>
-          <div class="summary-item">
-            <span class="summary-label">Scanned Files</span>
-            <span class="summary-value">{{.ScannedFileCount}}</span>
+          <div class="scan-info-item">
+            <i class="bi bi-folder scan-info-icon"></i>
+            <div>{{.ScanTarget}}</div>
           </div>
-          <div class="summary-item">
-            <span class="summary-label">Critical</span>
-            <span class="summary-value">{{index .SeverityCounts 4}}</span>
+          <div class="scan-info-item">
+            <i class="bi bi-file-earmark-text scan-info-icon"></i>
+            <div>{{.ScannedFileCount}} files scanned</div>
           </div>
-          <div class="summary-item">
-            <span class="summary-label">High</span>
-            <span class="summary-value">{{index .SeverityCounts 3}}</span>
-          </div>
-          <div class="summary-item">
-            <span class="summary-label">Medium</span>
-            <span class="summary-value">{{index .SeverityCounts 2}}</span>
-          </div>
-          <div class="summary-item">
-            <span class="summary-label">Low</span>
-            <span class="summary-value">{{index .SeverityCounts 1}}</span>
+          <div class="scan-info-item">
+            <i class="bi bi-clock scan-info-icon"></i>
+            <div>{{.GenerationTime}}</div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="controls-section">
-      <div class="filter-controls">
-        <input type="text" id="searchInput" class="search-box" placeholder="Search findings...">
-        <select id="severityFilter" class="filter-select">
-          <option value="all">All Severities</option>
-          <option value="critical">Critical</option>
-          <option value="high">High</option>
-          <option value="medium">Medium</option>
-          <option value="low">Low</option>
-        </select>
-        <div id="selectedSeverityCard" class="selected-severity-card" style="display:none;"></div>
-        <select id="categoryFilter" class="filter-select">
-          <option value="all">All Categories</option>
-          {{range .Categories}}
-            <option value="{{.Name | lower}}">{{.Name}}</option>
-          {{end}}
-        </select>
-        <div id="selectedCategoryCard" class="selected-category-card" style="display:none;"></div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Security Status</div>
+        <div class="risk-indicator">
+          <div class="risk-label">Security Score</div>
+          <div class="risk-score">{{.SecurityScore}}</div>
+          <div class="risk-level risk-{{toLowerCase .RiskLevel}}">{{.RiskLevel}}</div>
+        </div>
+      </div>
+      
+      <!-- Add sidebar footer -->
+      <div class="sidebar-footer">
+        DevSecOps @ <a href="https://www.kariyer.net" target="_blank">kariyer.net</a>
       </div>
     </div>
-    <div class="findings-section">
-      <div class="findings-header">
-        <h2>Detailed Findings</h2>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <div class="page-header">
+        <h1 class="page-title">Security Scan Results</h1>
       </div>
-      {{range .Findings}}
-      <div class="finding-card" data-severity="{{getSeverityName .Severity | lower}}" data-category="{{.Name | lower}}">
-        <div class="finding-header">
-          <h3>{{.Name}}</h3>
-          <span class="severity-badge severity-{{toLowerCase (getSeverityName .Severity)}}">
-            {{getSeverityName .Severity}}
-          </span>
-        </div>
-        <div class="finding-content">
-          <div class="code-snippet">
-            <span class="line-number">Line {{.LineNumber}}:</span>
-            <span>{{censor .Match}}</span>
+
+      <!-- Stats Cards -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="bi bi-shield-exclamation"></i>
           </div>
-          <p class="file-path">{{.File}}</p>
+          <div class="stat-title">Total Findings</div>
+          <div class="stat-value">{{.TotalFindings}}</div>
+        </div>
+        
+        <div class="stat-card stat-critical">
+          <div class="stat-icon">
+            <i class="bi bi-exclamation-octagon"></i>
+          </div>
+          <div class="stat-title">Critical</div>
+          <div class="stat-value">{{index .SeverityCounts 4}}</div>
+        </div>
+        
+        <div class="stat-card stat-high">
+          <div class="stat-icon">
+            <i class="bi bi-exclamation-triangle"></i>
+          </div>
+          <div class="stat-title">High</div>
+          <div class="stat-value">{{index .SeverityCounts 3}}</div>
+        </div>
+        
+        <div class="stat-card stat-medium">
+          <div class="stat-icon">
+            <i class="bi bi-exclamation-circle"></i>
+          </div>
+          <div class="stat-title">Medium</div>
+          <div class="stat-value">{{index .SeverityCounts 2}}</div>
+        </div>
+        
+        <div class="stat-card stat-low">
+          <div class="stat-icon">
+            <i class="bi bi-info-circle"></i>
+          </div>
+          <div class="stat-title">Low</div>
+          <div class="stat-value">{{index .SeverityCounts 1}}</div>
         </div>
       </div>
-      {{end}}
-      <div class="no-results" style="display:none;">No findings match your criteria.</div>
+
+      <!-- Charts -->
+      <div class="chart-container">
+        <div class="chart-card">
+          <div class="chart-header">
+            <div class="chart-title">Severity Distribution</div>
+          </div>
+          <div class="chart-body">
+            <div id="severityChart"></div>
+          </div>
+        </div>
+        
+        <div class="chart-card">
+          <div class="chart-header">
+            <div class="chart-title">Issue Categories</div>
+          </div>
+          <div class="chart-body">
+            <div id="categoriesChart"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Findings Table -->
+      <div class="findings-card">
+        <div class="chart-header">
+          <div class="chart-title">Security Findings</div>
+        </div>
+        
+        <div class="filter-controls">
+          <div class="search-input">
+            <i class="bi bi-search search-icon"></i>
+            <input type="text" id="searchInput" placeholder="Search findings...">
+          </div>
+          
+          <div class="severity-filter">
+            <select id="severityFilter">
+              <option value="all">All Severities</option>
+              <option value="critical">Critical</option>
+              <option value="high">High</option>
+              <option value="medium">Medium</option>
+              <option value="low">Low</option>
+            </select>
+            <i class="bi bi-chevron-down select-icon"></i>
+          </div>
+          
+          <div class="category-filter">
+            <select id="categoryFilter">
+              <option value="all">All Categories</option>
+              {{range .Categories}}
+                <option value="{{.Name | lower}}">{{.Name}}</option>
+              {{end}}
+            </select>
+            <i class="bi bi-chevron-down select-icon"></i>
+          </div>
+        </div>
+        
+        <div id="findingsTableContainer">
+          <table class="finding-table">
+            <thead>
+              <tr>
+                <th>Finding</th>
+                <th>Severity</th>
+                <th>Match</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{range .Findings}}
+              <tr class="finding-row" data-severity="{{getSeverityName .Severity | lower}}" data-category="{{.Name | lower}}">
+                <td data-label="Finding">
+                  <div class="finding-name" title="{{.Name}}">{{.Name}}</div>
+                  <div class="finding-file" title="{{.File}}">{{.File}}</div>
+                </td>
+                <td data-label="Severity">
+                  <span class="severity-badge severity-badge-{{toLowerCase (getSeverityName .Severity)}}">
+                    {{getSeverityName .Severity}}
+                  </span>
+                </td>
+                <td data-label="Match">
+                  <div class="match-line">Line {{.LineNumber}}</div>
+                  <code class="match-code" title="{{censor .Match}}">{{censor .Match}}</code>
+                </td>
+              </tr>
+              {{end}}
+            </tbody>
+          </table>
+          
+          <div class="no-findings">
+            <div class="no-findings-icon">
+              <i class="bi bi-search"></i>
+            </div>
+            <div class="no-findings-title">No findings match your criteria</div>
+            <div class="no-findings-message">Try adjusting your search or filters</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  
-  <div class="footer">
-    <p>DevSecOps Team @<a href="https://www.kariyer.net" target="_blank">kariyer.net</a></p>
-    <div class="footer-divider"></div>
-    <p>Generated on {{.ScanDate}}</p>
-    <p>Report generation time: {{.GenerationTime}}</p>
+
+  <!-- Finding Detail Modal -->
+  <div class="modal-backdrop" id="findingModal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modalTitle">Finding Details</h3>
+        <button class="close-btn" id="closeModal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-info">
+          <div class="info-item">
+            <div class="info-label">Severity</div>
+            <div class="info-value" id="modalSeverity"></div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">File Path</div>
+            <div class="info-value" id="modalFile"></div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Line Number</div>
+            <div class="info-value" id="modalLine"></div>
+          </div>
+        </div>
+        
+        <div class="code-block">
+          <div class="code-label">Code Snippet</div>
+          <span class="line-number" id="modalLineNumber"></span>
+          <span id="modalCode"></span>
+        </div>
+      </div>
+    </div>
   </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   
   <script>
-    var categoriesList = [
-      {{range .Categories}}
-      { name: "{{.Name | lower}}", count: {{.Count}}, severity: "{{getSeverityName .Severity | lower}}" },
-      {{end}}
-    ];
-    var categoriesData = {
-      {{range .Categories}}
-      "{{.Name | lower}}": {{.Count}},
-      {{end}}
-    };
-  </script>
-  
-  <script>
-    const ctx = document.getElementById('severityChart').getContext('2d');
-    new Chart(ctx, {
-      type: 'doughnut',
-      data: {
-        labels: ['Critical', 'High', 'Medium', 'Low'],
-        datasets: [{
-          data: [
-            {{index .SeverityCounts 4}},
-            {{index .SeverityCounts 3}},
-            {{index .SeverityCounts 2}},
-            {{index .SeverityCounts 1}}
-          ],
-          backgroundColor: ['#dc3545', '#fd7e14', '#ffc107', '#20c997']
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: { legend: { position: 'bottom' } }
-      }
-    });
-    
     document.addEventListener('DOMContentLoaded', function() {
-      const searchInput = document.getElementById('searchInput');
-      const severityFilter = document.getElementById('severityFilter');
-      const categoryFilter = document.getElementById('categoryFilter');
-      const findingCards = document.querySelectorAll('.finding-card');
-      const noResults = document.querySelector('.no-results');
-      const categoryCard = document.getElementById('selectedCategoryCard');
-      const severityCard = document.getElementById('selectedSeverityCard');
+      // Initialize severity chart
+      var severityOptions = {
+        series: [
+          {{index .SeverityCounts 4}},
+          {{index .SeverityCounts 3}},
+          {{index .SeverityCounts 2}},
+          {{index .SeverityCounts 1}}
+        ],
+        chart: {
+          type: 'donut',
+          height: 260,
+          fontFamily: 'Outfit, sans-serif',
+          redrawOnWindowResize: true,
+          redrawOnParentResize: true
+        },
+        colors: ['#f72585', '#f86642', '#ffc107', '#4cc9f0'],
+        labels: ['Critical', 'High', 'Medium', 'Low'],
+        legend: {
+          position: 'bottom',
+          fontSize: '14px',
+          fontFamily: 'Outfit, sans-serif',
+          fontWeight: 500,
+          itemMargin: {
+            horizontal: 10,
+            vertical: 5
+          }
+        },
+        plotOptions: {
+          pie: {
+            donut: {
+              size: '65%',
+              labels: {
+                show: true,
+                name: {
+                  show: true,
+                  fontSize: '14px',
+                  fontFamily: 'Outfit, sans-serif',
+                  offsetY: -10
+                },
+                value: {
+                  show: true,
+                  fontSize: '24px',
+                  fontFamily: 'Outfit, sans-serif',
+                  fontWeight: 700,
+                  offsetY: 10
+                },
+                total: {
+                  show: true,
+                  label: 'Total',
+                  fontSize: '14px',
+                  fontFamily: 'Outfit, sans-serif',
+                  fontWeight: 600
+                }
+              }
+            }
+          }
+        },
+        responsive: [
+          {
+            breakpoint: 480,
+            options: {
+              legend: {
+                position: 'bottom',
+                offsetY: 0
+              },
+              plotOptions: {
+                pie: {
+                  donut: {
+                    labels: {
+                      show: false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        stroke: {
+          width: 0
+        },
+        dataLabels: {
+          enabled: false
+        }
+      };
+
+      var severityChart = new ApexCharts(document.querySelector("#severityChart"), severityOptions);
+      severityChart.render();
+      
+      // Categories chart data
+      var categoryData = [
+        {{range .Categories}}
+        { name: "{{.Name}}", count: {{.Count}}, severity: "{{getSeverityName .Severity}}" },
+        {{end}}
+      ];
+      
+      // Sort categories by count (descending)
+      categoryData.sort((a, b) => b.count - a.count);
+      
+      // Take top 10 categories
+      var topCategories = categoryData.slice(0, 10);
+      
+      // Initialize categories chart
+      var categoriesOptions = {
+        series: [{
+          data: topCategories.map(c => c.count)
+        }],
+        chart: {
+          type: 'bar',
+          height: 260,
+          fontFamily: 'Outfit, sans-serif',
+          toolbar: {
+            show: false
+          },
+          redrawOnWindowResize: true,
+          redrawOnParentResize: true
+        },
+        plotOptions: {
+          bar: {
+            borderRadius: 4,
+            horizontal: true,
+            barHeight: '60%'
+          }
+        },
+        dataLabels: {
+          enabled: false
+        },
+        colors: ['#4361ee'],
+        xaxis: {
+          categories: topCategories.map(c => c.name),
+          labels: {
+            style: {
+              fontSize: '12px',
+              fontFamily: 'Outfit, sans-serif'
+            },
+            formatter: function(value) {
+              // Truncate long category names
+              return value.length > 15 ? value.substr(0, 12) + '...' : value;
+            }
+          }
+        },
+        yaxis: {
+          labels: {
+            style: {
+              fontSize: '12px',
+              fontFamily: 'Outfit, sans-serif'
+            }
+          }
+        },
+        grid: {
+          borderColor: '#f1f1f1',
+          strokeDashArray: 4
+        },
+        tooltip: {
+          y: {
+            formatter: function (val) {
+              return val + " findings"
+            }
+          },
+          // Show full category name in tooltip
+          custom: function({ series, seriesIndex, dataPointIndex, w }) {
+            var category = w.globals.labels[dataPointIndex];
+            var value = series[seriesIndex][dataPointIndex];
+            return '<div class="arrow_box">' +
+                   '<span>' + category + ': ' + value + ' findings</span>' +
+                   '</div>';
+          }
+        },
+        responsive: [
+          {
+            breakpoint: 576,
+            options: {
+              plotOptions: {
+                bar: {
+                  barHeight: '70%'
+                }
+              },
+              xaxis: {
+                labels: {
+                  formatter: function(value) {
+                    // Further truncate on small screens
+                    return value.length > 8 ? value.substr(0, 5) + '...' : value;
+                  }
+                }
+              }
+            }
+          }
+        ]
+      };
+
+      var categoriesChart = new ApexCharts(document.querySelector("#categoriesChart"), categoriesOptions);
+      categoriesChart.render();
+      
+      // Filtering functionality
+      var searchInput = document.getElementById('searchInput');
+      var severityFilter = document.getElementById('severityFilter');
+      var categoryFilter = document.getElementById('categoryFilter');
+      var findingRows = document.querySelectorAll('.finding-row');
+      var noFindings = document.querySelector('.no-findings');
       
       function filterFindings() {
-        const searchTerm = searchInput.value.toLowerCase();
-        const selectedSeverity = severityFilter.value;
-        const selectedCategory = categoryFilter.value;
-        let visibleCount = 0;
-        findingCards.forEach(card => {
-          const content = card.textContent.toLowerCase();
-          const cardSeverity = card.getAttribute('data-severity');
-          const cardCategory = card.getAttribute('data-category');
-          const matchesSearch = content.includes(searchTerm);
-          const matchesSeverity = selectedSeverity === 'all' || cardSeverity === selectedSeverity;
-          const matchesCategory = selectedCategory === 'all' || cardCategory === selectedCategory;
+        var searchTerm = searchInput.value.toLowerCase();
+        var selectedSeverity = severityFilter.value;
+        var selectedCategory = categoryFilter.value;
+        var visibleCount = 0;
+        
+        findingRows.forEach(function(row) {
+          var content = row.textContent.toLowerCase();
+          var rowSeverity = row.getAttribute('data-severity');
+          var rowCategory = row.getAttribute('data-category');
+          
+          var matchesSearch = content.includes(searchTerm);
+          var matchesSeverity = selectedSeverity === 'all' || rowSeverity === selectedSeverity;
+          var matchesCategory = selectedCategory === 'all' || rowCategory === selectedCategory;
+          
           if (matchesSearch && matchesSeverity && matchesCategory) {
-            card.style.display = 'block';
+            row.style.display = 'table-row';
             visibleCount++;
           } else {
-            card.style.display = 'none';
+            row.style.display = 'none';
           }
         });
-        noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+        
+        // Show/hide "no findings" message
+        if (visibleCount === 0) {
+          document.querySelector('.finding-table').style.display = 'none';
+          noFindings.style.display = 'block';
+        } else {
+          document.querySelector('.finding-table').style.display = 'table';
+          noFindings.style.display = 'none';
+        }
       }
       
       searchInput.addEventListener('input', filterFindings);
-      severityFilter.addEventListener('change', function() {
-        filterFindings();
-        var selected = this.value;
-        if (selected === 'all') {
-          severityCard.style.display = 'none';
-        } else {
-          var filtered = categoriesList.filter(function(cat) {
-            return cat.severity === selected;
-          });
-          if (filtered.length > 0) {
-            severityCard.style.display = 'block';
-            var details = filtered.map(function(cat) {
-              return cat.name + ": " + cat.count;
-            }).join(" | ");
-            severityCard.textContent = details;
-          } else {
-            severityCard.style.display = 'none';
+      severityFilter.addEventListener('change', filterFindings);
+      categoryFilter.addEventListener('change', filterFindings);
+      
+      // Export button functionality (just for show)
+      document.getElementById('exportBtn').addEventListener('click', function() {
+        var loader = document.querySelector('.page-loader');
+        loader.style.display = 'flex';
+        
+        setTimeout(function() {
+          loader.style.display = 'none';
+          alert('Report exported successfully!');
+        }, 1500);
+      });
+      
+      // Mobile menu toggle functionality
+      const menuToggle = document.getElementById('menuToggle');
+      const sidebar = document.getElementById('sidebar');
+      
+      if (menuToggle && sidebar) {
+        menuToggle.addEventListener('click', function() {
+          sidebar.classList.toggle('show');
+        });
+        
+        // Close sidebar when clicking outside
+        document.addEventListener('click', function(event) {
+          if (!sidebar.contains(event.target) && !menuToggle.contains(event.target) && sidebar.classList.contains('show')) {
+            sidebar.classList.remove('show');
           }
-        }
-      });
-      categoryFilter.addEventListener('change', function() {
-        filterFindings();
-        var selected = this.value;
-        if (selected === 'all') {
-          categoryCard.style.display = 'none';
-        } else {
-          var count = categoriesData[selected] || 0;
-          categoryCard.style.display = 'block';
-          var selectedText = this.options[this.selectedIndex].text;
-          categoryCard.textContent = selectedText + ": " + count;
-        }
-      });
+        });
+      }
     });
   </script>
 </body>
